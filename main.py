@@ -1,8 +1,8 @@
 import os
 import sys
 from pytube import YouTube
-import speech_recognition as sr
 from pydub import AudioSegment
+# import speech_recognition as sr
 
 
 def dld_au(url=''):
@@ -24,15 +24,17 @@ def recon(filepath=''):
 def main(url='', audio_format='wav'):
     dld_path = dld_au(url)
     nw_dld_path = dld_path.split('.')[0] + '.' + audio_format
+    print(nw_dld_path)
     x = a_con(oldFilePath=dld_path, newFilePath=nw_dld_path)
-    print(dir(x))
-    return print(recon(nw_dld_path))
+    # return print(recon(nw_dld_path))
+    return True
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         for arg in sys.argv[1:]:
-            main(url=arg)
+            print(arg)
+            main(url=arg, audio_format='mp3')
     else:
-        arg = "https://www.youtube.com/watch?v=CmwSf7rI2II"
+        arg = "https://www.youtube.com/watch?v=CSCnZdSLoA4"
         main(url=arg)
